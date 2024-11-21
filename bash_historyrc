@@ -1,0 +1,4 @@
+## arrow up
+bind '"\e[A":history-search-backward'
+## arrow down
+bind '"\e[B":history-search-forward'
