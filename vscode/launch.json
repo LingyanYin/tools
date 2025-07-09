@@ -1,0 +1,99 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "(gdb) ly_mysql_attach",
+            "type": "cppdbg",
+            "request": "attach",
+            "program": "${workspaceFolder}/dist/base/bin/mysqld",
+            //"processId": "${command:pickProcess}",
+            "processId": "",
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "outputCapture": "std",
+            "setupCommands": [
+                {
+                    "description": "for gdb pretty printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "After attach, break when throwing exception",
+                    "text": "-exec \"catch throw\"",
+                    "ignoreFailures": true
+                }
+            ],
+            "logging": {
+                "moduleLoad": false,
+                "engineLogging": false,
+                "traceResponse": true
+             },
+             "sourceFileMap": {
+                "${workspaceFolder}": {
+                   "editorPath" : "${workspaceFolder}",
+                   "useForBreakpoints" : false
+                }
+            }
+        },
+        {
+            "name": "Debug mysqld (lldb)",
+            "type": "lldb",
+            "request": "attach",
+            "program": "${workspaceFolder}/dist/base/bin/mysqld",
+            "pid": "${command:pickMyProcess}",
+            //"processId": "${command:pickProcess}",
+            // "args": [
+            //     "--defaults-file=${workspaceFolder}/.mysqld_config/my.conf"
+            // ],
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "for gdb pretty printing",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "After attach, break when throwing exception",
+                    "text": "-exec \"catch throw\"",
+                    "ignoreFailures": true
+                }
+            ],
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug mysqld",
+            "program": "${command:cmake.buildDirectory}/bin/mysqld",
+            "args": [
+                "--defaults-file=${workspaceFolder}/.mysqld_config/my.conf"
+            ],
+            "cwd": "${workspaceFolder}",
+            "preLaunchTask": "build-and-init-mysqld"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug mockserver",
+            "program": "${command:cmake.buildDirectory}/bin/mockserver",
+            "args": [
+                "-h",
+                "${command:cmake.buildDirectory}/storage_data",
+                "-p",
+                "8080"
+            ],
+            "cwd": "${command:cmake.buildDirectory}"
+        }
+    ]
+}
+

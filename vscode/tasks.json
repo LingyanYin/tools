@@ -1,0 +1,66 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "cmake",
+            "label": "build-mockserver",
+            "command": "build",
+            "targets": [
+                "mockserver"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Build task to build mock server"
+        },
+        {
+            "type": "cmake",
+            "label": "build-mysqld",
+            "command": "build",
+            "targets": [
+                "component_reference_cache",
+                "mysqld"
+            ],
+            "group": "build",
+            "problemMatcher": [],
+            "detail": "Build task to build mock server"
+        },
+        {
+            "label": "empty-tmp-and-data-dir",
+            "type": "shell",
+            "command": "rm -rf ${command:cmake.buildDirectory}/tmp; rm -rf ${command:cmake.buildDirectory}/data; mkdir ${command:cmake.buildDirectory}/tmp; mkdir ${command:cmake.buildDirectory}/data",
+            "args": []
+        },
+        {
+            "label": "build-and-init-mysqld",
+            "type": "shell",
+            "options": {
+                "cwd": "${command:cmake.buildDirectory}"
+            },
+            "command": "${command:cmake.buildDirectory}/bin/mysqld --defaults-file=${workspaceRoot}/.mysqld_config/my.conf --initialize-insecure --gdb",
+            "dependsOn": [
+                "empty-tmp-and-data-dir",
+                "build-mysqld"
+            ],
+            "args": []
+        },
+        {
+            "label": "start-mockserver",
+            "type": "shell",
+            "options": {
+                "cwd": "${command:cmake.buildDirectory}"
+            },
+            "command": "${command:cmake.buildDirectory}/bin/mockserver",
+            "dependsOn": [
+                "build-mockserver"
+            ],
+            "args": [
+                "-h",
+                "${command:cmake.buildDirectory}/storage_data",
+                "-p",
+                "8080"
+            ],
+            "problemMatcher": []
+        }
+    ]
+}
+

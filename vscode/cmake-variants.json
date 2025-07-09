@@ -1,0 +1,64 @@
+{
+    "buildOpt": {
+        "default": "real",
+        "description": "Build storage type option (real / mock)",
+        "choices": {
+            "real": {
+                "short": "Real",
+                "long": "build with real store",
+                "settings": {
+                    "CMAKE_CXX_FLAGS": "-DUSE_LOG_STORE -lunwind"
+                }
+            },
+            "mock": {
+                "short": "Mock",
+                "long": "build with mock store",
+                "settings": {
+                    "CMAKE_CXX_FLAGS": "-DUSE_MOCK_LOG_STORE -DUSE_LOG_STORE"
+                }
+            }
+        }
+    },
+    "buildTarget": {
+        "default": "debug",
+        "description": "build target option (release / debug / sanitizer)",
+        "choices": {
+            "release": {
+                "short": "Release",
+                "long": "build for release",
+                "buildType": "RelWithDebInfo",
+                "settings": {
+                    "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+                }
+            },
+            "debug": {
+                "short": "Debug",
+                "long": "build for debug",
+                "buildType": "Debug",
+                "settings": {
+                    "CMAKE_BUILD_TYPE": "Debug"
+                }
+            },
+            "sanitizer": {
+                "short": "Sanitizer",
+                "long": "build for sanitizer",
+                "buildType": "Debug",
+                "settings": {
+                    "CMAKE_BUILD_TYPE": "Debug",
+                    "WITH_ASAN": "1",
+                    "WITH_UBSAN": "1"
+                }
+            },
+            "address_sanitizer": {
+                "short": "ASAN",
+                "long": "build for asan",
+                "buildType": "Debug",
+                "settings": {
+                    "CMAKE_BUILD_TYPE": "Debug",
+                    "WITH_ASAN": "1"
+                }
+            }
+        }
+    }
+}
+

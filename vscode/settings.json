@@ -1,0 +1,74 @@
+{
+    "cmake.cmakePath": "/home/lingyan.yin/.local/cmake/cmake-3.25.1-linux-x86_64/bin/cmake", 
+    "cmake.environment": {
+        //"LD_LIBRARY_PATH": "${env:LD_LIBRARY_PATH}"
+        "LD_LIBRARY_PATH": "/data11/lingyan.yin/mysql8.0/source_downloads/openssl/lib:/data11/lingyan.yin/.local/gcc-9.4.0/lib64/:/data11/lingyan.yin/.local/gcc-9.4.0/libexec/:/data11/lingyan.yin/.local/gcc-9.4.0/gcc-prerequisites/gmp/lib:/data11/lingyan.yin/.local/gcc-9.4.0/gcc-prerequisites/isl/lib:/data11/lingyan.yin/.local/gcc-9.4.0/gcc-prerequisites/mpc/lib:/data11/lingyan.yin/.local/gcc-9.4.0/gcc-prerequisites/mpfr/lib:/data11/lingyan.yin/mysql8.0/source_downloads//logstore/libs:/usr/local/lib"
+    },
+    "cmake.configureArgs": [
+        "--no-warn-unused-cli"
+    ],
+    "cmake.configureSettings": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "1",
+        "WITH_BOOST": "${workspaceFolder}/source_downloads",
+        "WITH_SSL": "/data11/lingyan.yin/mysql8.0/source_downloads/openssl-3.0.10/dist",
+        "WITH_CURL": "system",
+        "WITH_ZLIB": "bundled",
+        "WITH_INNODB_MEMCACHED": "ON",
+        "ENABLE_DOWNLOADS": "1",
+        "WITHOUT_ARCHIVE_STORAGE_ENGINE": "1",
+        "WITHOUT_BLACKHOLE_STORAGE_ENGINE": "1",
+        "WITHOUT_EXAMPLE_STORAGE_ENGINE": "1",
+        "WITHOUT_FEDERATED_STORAGE_ENGINE": "1",
+        "WITHOUT_NDBCLUSTER_STORAGE_ENGINE": "1",
+        "WITHOUT_TOKUDB_STORAGE_ENGINE": "1",
+        "WITHOUT_TOKUDB": "1",
+        "WITHOUT_ROCKSDB_STORAGE_ENGINE": "1",
+        "WITHOUT_ROCKSDB": "1",
+        "WITH_ROCKSDB_FDL": "1",
+        "CMAKE_INSTALL_PREFIX": "${workspaceFolder}/dist/${variant:buildOpt}_${variant:buildTarget}"
+    },
+    "cmake.default.generator": "Unix Makefiles",
+    "cmake.generator": "Unix Makefiles",
+    "cmake.buildDirectory": "${workspaceFolder}/build/${variant:buildOpt}_${variant:buildTarget}",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+	  "vim.useSystemClipboard": true,
+    "vim.vimrc.enable": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "j"],
+            "after": ["<Esc>"]
+        }            
+    ],
+    // "cmake.copyCompileCommands": "${workspaceFolder}/build/compile_commands.json",
+    "clangd.onConfigChanged": "restart",
+    "clangd.arguments": [
+        "--compile-commands-dir=output",
+        "--background-index",
+        "--clang-tidy",
+        "--cross-file-rename",
+        "--suggest-missing-includes"
+    ],
+    "C_Cpp.autocomplete": "disabled",                        // 关闭c/c++插件language server功能。只保留预编译变灰功能
+    "C_Cpp.codeAnalysis.clangTidy.enabled": false,           // 关闭c/c++插件language server功能。只保留预编译变灰功能
+    "C_Cpp.vcpkg.enabled": false,                            // 关闭c/c++插件language server功能。只保留预编译变灰功能
+    "C_Cpp.codeFolding": "disabled",                         // 关闭c/c++插件language server功能。只保留预编译变灰功能
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "git.autoRepositoryDetection": "openEditors",
+    "git.ignoredRepositories": [
+        "./.cache",
+        "./.vscode"
+    ],
+    "files.associations": {
+        "*.cc": "cpp",
+        "*.ic": "cpp"
+    },
+    "git.repositoryScanIgnoredFolders": [
+        "node_modules",
+        ".cache",
+        ".vscode"
+    ],
+    "cmake.buildTask": false,
+    "cmake.copyCompileCommands": "${workspaceFolder}/compile_commands.json",
+    "cmake.statusbar.visibility": "compact"
+}
+
