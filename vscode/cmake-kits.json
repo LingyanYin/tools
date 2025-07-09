@@ -1,0 +1,10 @@
+[
+    {
+        "name": "GCC 9.4",
+        "compilers": {
+          "C": "/home/lingyan.yin/.local/gcc-9.4.0/bin/gcc",
+          "CXX": "/home/lingyan.yin/.local/gcc-9.4.0/bin/g++"
+        }
+    }
+]
+
